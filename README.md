@@ -255,11 +255,12 @@ sudo systemctl stop apache2
 ```bash
 sudo a2dismod php7.4
 ```
-```
+
+
 ```bash
 sudo a2dismod mpm_prefork
 ```
-```
+
 ```bash
 sudo a2enmod mpm_event
 ```

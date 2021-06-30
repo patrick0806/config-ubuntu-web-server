@@ -1,7 +1,11 @@
-#Config a Web Server on Ubuntu 20.04
+# Config a Web Server on Ubuntu 20.04
 
 ### These instructions assume that you have already created a droplet with ubuntu, if you don't know how to do that, see how [here](https://www.digitaloceanbr.com.br/como-criar-droplet-digitalocean.html#:~:text=Com%20o%20cadastro%20ativo%20realize,cria%C3%A7%C3%A3o%20de%20um%20novo%20servidor.).
-if you need create another usser, see how [here](https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-20-04).
+### if you need create another user, see how [here](https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-20-04).
+### These Documentation is created with based on this archicles
+* https://www.digitalocean.com/community/tutorials/how-to-install-the-apache-web-server-on-ubuntu-20-04-pt
+* https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-20-04-pt
+* https://www.digitalocean.com/community/tutorials/how-to-configure-apache-http-with-mpm-event-and-php-fpm-on-ubuntu-18-04-pt
 # 1. Setting Up a Basic Firewall
 ### 1.1type on bash 
 ```bash
@@ -238,4 +242,61 @@ We will install PHP and modules to communicate with MYSQL and APACHE for this ty
 ```bash
 sudo apt install php libapache2-mod-php php-mysql
 ```
+See PHP version:
+```bash
+php -v
+```
 # 5 Install PHP-FPM
+### 5.1 Changing the Multiprocessing module
+type this commands:
+```bash
+sudo systemctl stop apache2
+```
+```bash
+sudo a2dismod php7.4
+```
+```
+```bash
+sudo a2dismod mpm_prefork
+```
+```
+```bash
+sudo a2enmod mpm_event
+```
+### 5.2 Configuring Apache HTTP to use FastCGI process manager
+First install php-fpm
+```bash
+sudo apt install php-fpm
+```
+To communicate, Apache HTTP and PHP need a library that enables this capability
+```bash
+sudo apt install libapache2-mod-fcgid
+```
+
+Now firt enable php-fpm module
+```bash
+sudo a2enconf php7.4-fpm
+```
+
+Enable Apache proxy HTTP
+```bash
+sudo a2enmod proxy
+```
+Enable FastCGI proxy module on Apache HTTP:
+```bash
+sudo a2enmod proxy_fcgi
+```
+Now with everything installed let's do a configuration check:
+```bash
+sudo apachectl configtest
+```
+expected
+```bash
+Output
+Syntax OK
+```
+
+Now restart Apache
+```bash
+sudo systemctl restart apache2
+```

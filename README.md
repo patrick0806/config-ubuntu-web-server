@@ -7,7 +7,7 @@
 * https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-20-04-pt
 * https://www.digitalocean.com/community/tutorials/how-to-configure-apache-http-with-mpm-event-and-php-fpm-on-ubuntu-18-04-pt
 # 1. Setting Up a Basic Firewall
-### 1.1type on bash 
+### 1.1 Type on bash 
 ```bash
 sudo ufw app list
 ```
@@ -22,7 +22,7 @@ Available applications:
 sudo ufw allow OpenSSH
 ```
 
-### 1.3 enable firewall
+### 1.3 Enable firewall
 ```bash
 sudo ufw enable
 ```
@@ -154,11 +154,11 @@ and paste and replace your_domain for the name of your virtual host
 </VirtualHost>
 ```
 #### 2.5.5 Make apche using the virtual hsot
-enable our file
+Enable our file
 ```bash
 sudo a2ensite your_domain.conf
 ```
-and disable default file
+And disable default file
 ```bash
 sudo a2dissite 000-default.conf
 ```
@@ -166,12 +166,12 @@ Next, let's test for configuration errors:
 ```bash
 sudo apache2ctl configtest
 ```
-expected out put
+Expected out put
 ```bash
 Output
 Syntax OK
 ```
-if all ok lets restart apache for apply changes
+If all ok lets restart apache for apply changes
 ```bash
 sudo systemctl restart apache2
 ```

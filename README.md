@@ -175,3 +175,67 @@ sudo systemctl restart apache2
 Now your virtual directory is configured access your domain and test if a index.html page is online
 
 # 3 Config MYSQL server
+```bash
+sudo apt install mysql-server
+```
+When prompted, confirm the installation by typing Y and then ENTER.
+
+It is recommended that you run a security script that comes pre-installed with MySQL. This script will remove some insecure default settings and block access to your database system. Start the interactive script by running:
+
+```bash
+sudo mysql_secure_installation
+```
+This script will ask you if you want to configure the VALIDATE PASSWORD PLUGIN.
+
+Answer Y for yes, or anything else to continue without enabling it.
+
+If you answer yes, you will be asked to select a password validation level.
+```bash
+There are three levels of password validation policy:
+
+LOW    Length >= 8
+MEDIUM Length >= 8, numeric, mixed case, and special characters
+STRONG Length >= 8, numeric, mixed case, special characters and dictionary              file
+
+Please enter 0 = LOW, 1 = MEDIUM and 2 = STRONG: 1
+```
+If you enable password validation, you will be presented with the password strength for the root password and your server will ask you if you want to continue with that password. If you are satisfied with your current password, type Y for “yes” at the prompt:
+```bash
+Estimated strength of the password: 100
+Do you wish to continue with the password provided?(Press y|Y for Yes, any other key for No) : y
+```
+For the rest of the questions, press Y and press the ENTER key at each prompt. This will remove some anonymous users and test database, disable remote logins for root, and load these new rules so that MySQL immediately respects the changes you've made.
+
+When finished, test if you can log in to the MySQL console by typing:
+```bash
+sudo mysql
+```
+If works you see this text:
+```bash
+Output
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 22
+Server version: 8.0.19-0ubuntu5 (Ubuntu)
+
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql>
+```
+
+For exit mysql type:
+```bash
+mysql> exit;
+```
+
+# 4 Install PHP
+We will install PHP and modules to communicate with MYSQL and APACHE for this type:
+```bash
+sudo apt install php libapache2-mod-php php-mysql
+```
+# 5 Install PHP-FPM

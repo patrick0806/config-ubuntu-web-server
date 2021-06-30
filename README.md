@@ -42,7 +42,7 @@ OpenSSH                    ALLOW       Anywhere
 OpenSSH (v6)               ALLOW       Anywhere (v6)
 ```
 
-# 2. config Apache Web Serve
+# 2. Config Apache Web Serve
 ### 2.1 Let's start by updating the local package index
 ```bash
   sudo apt update

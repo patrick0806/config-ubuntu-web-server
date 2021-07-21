@@ -6,6 +6,7 @@
 * https://www.digitalocean.com/community/tutorials/how-to-install-the-apache-web-server-on-ubuntu-20-04-pt
 * https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-20-04-pt
 * https://www.digitalocean.com/community/tutorials/how-to-configure-apache-http-with-mpm-event-and-php-fpm-on-ubuntu-18-04-pt
+* https://www.digitalocean.com/community/tutorials/how-to-secure-apache-with-let-s-encrypt-on-ubuntu-20-04
 # 1. Setting Up a Basic Firewall
 ### 1.1 Type on bash 
 ```bash
@@ -122,16 +123,6 @@ Output
 ```bash
   sudo chmod -R 755 /var/www/your_domain
 ```
-```bash
-  sudo chown -R www-data:www-data /var/www/your_domain
-```
-```bash
-  sudo find /var/www/your_domain/ -type d -exec chmod 750 {} \;
-```
-```bash
-  sudo find /var/www/your_domain/ -type f -exec chmod 640 {} \;
-```
-
 
 #### 2.5.3 Now for test create a index.html in this directory
 ```bash
